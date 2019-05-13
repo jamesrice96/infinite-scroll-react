@@ -29,11 +29,16 @@ class App extends React.Component {
   }
 
   async fetchImages() {
-    const resp = await fetch(
-      `/api/photos?count=${this.state.count}&start=${this.state.start}`
-    );
-    const data = await resp.json();
-    return data;
+    try{
+      const resp = await fetch(
+        `/api/photos?count=${this.state.count}&start=${this.state.start}`
+      );
+      const data = await resp.json();
+      return data;
+    }
+    catch(err){
+      console.log(err);
+    }
   }
 
   handleScroll = () => {
