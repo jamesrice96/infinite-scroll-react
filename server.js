@@ -34,8 +34,6 @@ app.get('/api/photos', async (req, res) => {
     .then(json => res.json(json));
 });
 
-const PORT = process.env.PORT;
-
-console.log(process.env.NODE_ENV);
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}...`));
