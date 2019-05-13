@@ -15,6 +15,8 @@ const unsplash = new Unsplash({
   callbackUrl: config.get('CALLBACK_URL')
 });
 
+console.log(process.env.CALLBACK_URL);
+
 const app = express();
 
 //Serve static assets if in production
