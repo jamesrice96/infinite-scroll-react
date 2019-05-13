@@ -16,7 +16,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "proxy": "http://localhost:5000",
+  "proxy": "https://infinite-scroll-react.herokuapp.com/",
   "browserslist": {
     "production": [
       ">0.2%",
