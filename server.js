@@ -1,12 +1,18 @@
+const express = require('express');
+const app = express();
+
 //dotenv - .env
 const dotenv = require('dotenv');
-dotenv.config();
+
+if (app.get('env') === 'development') {
+  dotenv.config();
+}
+
 //import rest of stuff
 global.fetch = require('node-fetch');
 const config = require('universal-config');
 const Unsplash = require('unsplash-js').default;
 const toJson = require('unsplash-js').toJson;
-const express = require('express');
 const path = require('path');
 
 const unsplash = new Unsplash({
@@ -15,10 +21,8 @@ const unsplash = new Unsplash({
   callbackUrl: config.get('CALLBACK_URL')
 });
 
-const app = express();
-
 //Serve static assets if in production
-if (process.env.NODE_ENV === 'production') {
+if (app.get('env') === 'production') {
   //Set static folder
   app.use(express.static('client/build'));
   //Load client index file
