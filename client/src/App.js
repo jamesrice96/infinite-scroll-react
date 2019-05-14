@@ -29,14 +29,13 @@ class App extends React.Component {
   }
 
   async fetchImages() {
-    try{
+    try {
       const resp = await fetch(
         `/api/photos?count=${this.state.count}&start=${this.state.start}`
       );
       const data = await resp.json();
       return data;
-    }
-    catch(err){
+    } catch (err) {
       console.log(err);
     }
   }
@@ -82,7 +81,7 @@ class App extends React.Component {
   render() {
     const { images, dataLoaded } = this.state;
 
-    if (dataLoaded === true) {
+    if (dataLoaded === true && images.length > 0) {
       return (
         <div className="container">
           <h1 className="py-5 text-center">
@@ -97,7 +96,7 @@ class App extends React.Component {
         </div>
       );
     } else {
-      return <p>Loading...</p>;
+      return <p />;
     }
   }
 }

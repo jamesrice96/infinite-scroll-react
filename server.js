@@ -1,16 +1,18 @@
-global.fetch = require('node-fetch');
 const express = require('express');
+const app = express();
 const dotenv = require('dotenv');
+
+//Check before imports incase anything else uses the config
+if (app.get('env') === 'development') {
+  dotenv.config();
+}
+
+//import rest of stuff
+global.fetch = require('node-fetch');
 const config = require('universal-config');
 const Unsplash = require('unsplash-js').default;
 const toJson = require('unsplash-js').toJson;
 const path = require('path');
-
-const app = express();
-
-if (app.get('env') === 'development') {
-  dotenv.config();
-}
 
 const unsplash = new Unsplash({
   applicationId: config.get('APPLICATION_ID'),
